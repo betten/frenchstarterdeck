@@ -97,17 +97,23 @@ $(function() {
     update_count();
   });
   $('#download').click(function() {
-    var checked = $('.selected:checked');
-    var clen = checked.length;
+    $(this).button('loading');
+    var e = document.getElementsByClassName('example');
+    var n = e.length;
     var form_html = '';
-    for(var i = 0; i < clen; i++) {
-      var word = checked.eq(i).parents('.word');
-      var example = checked.eq(i).parents('.example');
-      form_html += '<input name="word[' + i + '][word]" value="' + word.find('h4').text() + '" />';
-      form_html += '<input name="word[' + i + '][french]" value="' + example.find('.french').text() + '" />';
-      form_html += '<input name="word[' + i + '][english]" value="' + example.find('.english').text() + '" />';
+    for(var i = 0; i < n; i++) {
+      if(e[i].getElementsByClassName('selected')[0].checked) {
+        // trying out some node traversal and native js to see if faster than jquery
+        var word = e[i].parentNode.parentNode.parentNode.getElementsByTagName('h4')[0].innerText;
+        var french = e[i].getElementsByClassName('french')[0].innerText;
+        var english = e[i].getElementsByClassName('english')[0].innerText;
+        form_html += '<input name="word[' + i + '][word]" value="' + word + '" />';
+        form_html += '<input name="word[' + i + '][french]" value="' + french + '" />';
+        form_html += '<input name="word[' + i + '][english]" value="' + english + '" />';
+      }
     }
     $('#generate').html(form_html);
     $('#generate').submit();
+    $(this).button('reset');
   });
 });
