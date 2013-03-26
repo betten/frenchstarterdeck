@@ -21,9 +21,9 @@
           %p 
             First 1000 words from the French frequency list 
             %a{ :href => "http://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/French_wordlist_opensubtitles_5000", :target => "_blank" } here 
-            have been matched up with a database of French/English sentence pairing generated from code kept 
-            %a{ :href => "https://github.com/betten/ankipack", :target => "_blank" } here 
-            using sentences downloaded from tatoeba 
+            have been matched up with a database of French/English sentence pairings generated from 
+            %a{ :href => "https://github.com/betten/ankipack", :target => "_blank" } this 
+            code using sentences downloaded from tatoeba 
             = succeed '.' do
               %a{ :href => "http://tatoeba.org/eng/download_tatoeba_example_sentences", :target => "_blank" } here
             Each of the 1000 words has at most 10 example sentences, and the way it's currently coded, the data's weighing in at just over 1MB and 
@@ -37,7 +37,7 @@
           %p
             Select example sentences, then click 'download deck' to download a comma separated text file which can be imported to an anki deck following the instructions
             = succeed '.' do
-              %a{ :href => "http://ankisrs.net/docs/manual.html#importing" } here
+              %a{ :href => "http://ankisrs.net/docs/manual.html#importing", :target => "_blank" } here
 
           .navbar.navbar-fixed-bottom
             .navbar-inner
@@ -60,7 +60,7 @@
                           currently selected
                       %li.divider
                       %li
-                        #download.btn.btn-success download deck
+                        %button#download.btn.btn-success{ "data-loading-text" => "generating..." } download deck
 
           #list
 
