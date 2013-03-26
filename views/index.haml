@@ -1,0 +1,72 @@
+!!!
+%html
+  %head
+    %title French Starter Deck
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+    %link{ :href => "css/bootstrap.min.css", :rel => "stylesheet", :media => "screen" }
+    %link{ :href => "css/frenchstarterdeck.css", :rel => "stylesheet", :media => "screen" }
+  %body
+    .container
+      .row
+        .span12
+          %h1 French Starter Deck
+          %h3 
+            Starter
+            %a{ :href => "http://ankisrs.net", :target => "_blank" } anki 
+            deck generation using word
+            %a{ :href => "http://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#French", :target => "_blank" } frequency
+            lists and 
+            %a{ :href => "http://tatoeba.org", :target => "_blank" } tatoeba
+
+          %p 
+            First 1000 words from the French frequency list 
+            %a{ :href => "http://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/French_wordlist_opensubtitles_5000", :target => "_blank" } here 
+            have been matched up with a database of French/English sentence pairing generated from code kept 
+            %a{ :href => "https://github.com/betten/ankipack", :target => "_blank" } here 
+            using sentences downloaded from tatoeba 
+            = succeed '.' do
+              %a{ :href => "http://tatoeba.org/eng/download_tatoeba_example_sentences", :target => "_blank" } here
+            Each of the 1000 words has at most 10 example sentences, and the way it's currently coded, the data's weighing in at just over 1MB and 
+            %b can take a minute or two to load. 
+            Everything here is experimental. More has been or will be written 
+            = succeed '.' do
+              %a{ :href => "http://learneverylanguage.com", :target => "_blank" } here
+            Contact
+            %a{ :href => "mailto:mike@learneverylanguage.com" } mike@learneverylanguage.com
+            any time.
+          %p
+            Select example sentences, then click 'download deck' to download a comma separated text file which can be imported to an anki deck following the instructions
+            = succeed '.' do
+              %a{ :href => "http://ankisrs.net/docs/manual.html#importing" } here
+
+          .navbar.navbar-fixed-bottom
+            .navbar-inner
+              .container
+                .row
+                  .span12
+                    %h1#loading 
+                      %i.icon-time
+                      loading...
+                    %ul#nav.nav.nav-list
+                      %li
+                        .btn-group
+                          %button.btn.btn-danger#clear clear all
+                          %button.btn.btn-warning#random 3 random sentences per word
+                          %button.btn.btn-primary#all select all
+                      %li.divider
+                      %li
+                        %p.brand 
+                          %span#count 2456 
+                          currently selected
+                      %li.divider
+                      %li
+                        #download.btn.btn-success download deck
+
+          #list
+
+          %form#generate{ :action => "/generate", :method => "post" }
+
+
+    %script{ :src => "http://code.jquery.com/jquery.js" }
+    %script{ :src => "js/bootstrap.min.js" }
+    %script{ :src => "js/frenchstarterdeck.js" }

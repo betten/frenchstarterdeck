@@ -1,0 +1,11 @@
+#nav {
+  display: none;
+}
+#nav .brand {
+  color: #000;
+  font-weight: bold;
+  margin: 0 10px;
+}
+#generate {
+  display: none;
+}
